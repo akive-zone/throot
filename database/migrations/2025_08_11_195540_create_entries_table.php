@@ -17,15 +17,13 @@ return new class extends Migration
             $table->text('content')->nullable();
             $table->string('url')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('post_id')->nullable()->constrained('entries')->onDelete('cascade');
             $table->foreignId('parent_id')->nullable()->constrained('entries')->onDelete('cascade');
             $table->string('type')->default('entry');
             $table->timestamps();
             $table->softDeletes();
-            
+
             $table->index(['type', 'created_at']);
-            $table->index(['user_id', 'created_at']);
-            $table->index(['post_id', 'created_at']);
+            $table->index(['entry_id', 'created_at']);
             $table->index(['parent_id']);
         });
     }

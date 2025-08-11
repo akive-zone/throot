@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('votes', function (Blueprint $table) {
+        Schema::create('entity_types', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('post_id')->constrained('entries')->onDelete('cascade');
-            $table->boolean('is_upvote');
+            $table->string('name');
+            $table->string('slug');
+            $table->text('description')->nullable();
+            $table->json('schema')->nullable();
+            $table->jsonb('settings')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
-            $table->unique(['entity_id', 'post_id']);
-            $table->index(['post_id', 'is_upvote']);
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('votes');
+        Schema::dropIfExists('entity_types');
     }
 };
