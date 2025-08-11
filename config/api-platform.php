@@ -17,8 +17,8 @@ use Illuminate\Auth\AuthenticationException;
 use Symfony\Component\Serializer\NameConverter\SnakeCaseToCamelCaseNameConverter;
 
 return [
-    'title' => 'API Platform',
-    'description' => 'My awesome API',
+    'title' => 'Rabbithole',
+    'description' => '',
     'version' => '1.0.0',
     'show_webby' => true,
 
@@ -29,6 +29,7 @@ return [
     ],
 
     'resources' => [
+        app_path('Transfers'),
         app_path('Models'),
     ],
 
