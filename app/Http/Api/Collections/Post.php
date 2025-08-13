@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Api\Resources;
+namespace App\Http\Api\Collections;
 
 use ApiPlatform\Metadata\Get;
 
